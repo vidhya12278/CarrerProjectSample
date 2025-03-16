@@ -1,0 +1,9 @@
+API's
+1. SaveDetails
+2. EnablePublish
+3. GetCareerMaster
+4. AllOpenings
+5. DeleteOpenings
+6. SaveCandidate
+7. AllCandidate
+8. FilterCandidate
