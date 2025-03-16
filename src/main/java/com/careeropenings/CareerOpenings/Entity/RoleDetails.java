@@ -11,69 +11,58 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Entity
 @Table(name = "testrole_details")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SequenceGenerator(name = "role_seq", sequenceName = "ROLE_SEQ", allocationSize = 1)
 public class RoleDetails {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "role_seq")
-    private Long detailId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long detailId;
 
-    private String summary;
-    private String keyResponsibilities;
-    private String requiredQualification;
-    private String skills;
-    private String work_experience;
-    private String lpa;
-    private String publish;
+	private String summary;
+	private String keyResponsibilities;
+	private String requiredQualification;
+	private String skills;
+	private String work_experience;
+	private String lpa;
+	private String publish;
 
-    @Column(name = "inserteddate", columnDefinition = "TIMESTAMP")
-    private LocalDateTime inserteddate;
+	@Column(name = "inserteddate", columnDefinition = "TIMESTAMP")
+	private LocalDateTime inserteddate;
 
-    @Column(name = "publisheddate", columnDefinition = "TIMESTAMP")
-    private LocalDateTime publisheddate;
+	@Column(name = "publisheddate", columnDefinition = "TIMESTAMP")
+	private LocalDateTime publisheddate;
 
-    @ManyToOne
-    @JoinColumn(name = "rolecode", referencedColumnName = "rolecode")
-    private RoleModel roleModel;
+	@ManyToOne
+	@JoinColumn(name = "rolecode", referencedColumnName = "rolecode")
+	private RoleModel roleModel;
 
-    @PrePersist
-    protected void onCreate() {
-        this.inserteddate = LocalDateTime.now();
-    }
+	@PrePersist
+	protected void onCreate() {
+		this.inserteddate = LocalDateTime.now();
+	}
 
-    @PreUpdate
-    protected void onUpdate() {
-        if ("1".equals(this.publish != null ? this.publish : "0") && this.publisheddate == null) {
-            this.publisheddate = LocalDateTime.now();
-        }
-    }
+	@PreUpdate
+	protected void onUpdate() {
+		if ("1".equals(this.publish != null ? this.publish : "0") && this.publisheddate == null) {
+			this.publisheddate = LocalDateTime.now();
+		}
+	}
 
-    @Override
-    public String toString() {
-        return "RoleDetails {" +
-                "detailId=" + detailId +
-                ", summary='" + summary + '\'' +
-                ", keyResponsibilities='" + keyResponsibilities + '\'' +
-                ", requiredQualification='" + requiredQualification + '\'' +
-                ", skills='" + skills + '\'' +
-                ", work_experience='" + work_experience + '\'' +
-                ", lpa='" + lpa + '\'' +
-                ", publish='" + publish + '\'' +
-                ", inserteddate=" + inserteddate +
-                ", publisheddate=" + publisheddate +
-                ", roleModel=" + (roleModel != null ? roleModel.getRolename() : "null") +
-                '}';
-    }
+	@Override
+	public String toString() {
+		return "RoleDetails {" + "detailId=" + detailId + ", summary='" + summary + '\'' + ", keyResponsibilities='"
+				+ keyResponsibilities + '\'' + ", requiredQualification='" + requiredQualification + '\'' + ", skills='"
+				+ skills + '\'' + ", work_experience='" + work_experience + '\'' + ", lpa='" + lpa + '\''
+				+ ", publish='" + publish + '\'' + ", inserteddate=" + inserteddate + ", publisheddate=" + publisheddate
+				+ ", roleModel=" + (roleModel != null ? roleModel.getRolename() : "null") + '}';
+	}
 }
