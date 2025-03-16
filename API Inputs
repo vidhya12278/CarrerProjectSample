@@ -1,0 +1,229 @@
+API's
+1. SaveDetails
+2. EnablePublish
+3. GetCareerMaster
+4. AllOpenings
+5. DeleteOpenings
+6. SaveCandidate
+7. AllCandidate
+8. FilterCandidate
+
+1. SaveDetails
+URL: http://localhost:8081/saveDetails
+Method: POST
+I/p: 
+[
+    {
+        "roleModel": {
+            "rolecode": "API_DEV"
+        },
+        "summary": "To research, prepare, write, and edit online content/blog posts in FinTech domain...",
+        "keyResponsibilities": "Develop and maintain web applications",
+        "requiredQualification": "B.Tech in Computer Science",
+        "skills": "Reactjs",
+        "work_experience": "6 years",
+        "lpa": "14-30",
+        "publish": "0"
+    }
+]
+O/P:
+{
+    "unPublishedDetails": [
+        {
+            "detailId": 5,
+            "summary": "To research, prepare, write, and edit online content/blog posts in FinTech domain...",
+            "keyResponsibilities": "Develop and maintain web applications",
+            "requiredQualification": "B.Tech in Computer Science",
+            "skills": "Reactjs",
+            "work_experience": "6 years",
+            "lpa": "14-30",
+            "publish": "0",
+            "inserteddate": "2025-03-16T14:34:22",
+            "publisheddate": null,
+            "roleModel": {
+                "rolecode": "API_DEV",
+                "rolename": "API Developer"
+            }
+        },
+        {
+            "detailId": 4,
+            "summary": "To research, prepare, write, and edit online content/blog posts in FinTech domain...",
+            "keyResponsibilities": "Develop and maintain web applications",
+            "requiredQualification": "B.Tech in Computer Science",
+            "skills": "Reactjs",
+            "work_experience": "6 years",
+            "lpa": "14-30",
+            "publish": "0",
+            "inserteddate": "2025-03-16T13:08:25",
+            "publisheddate": null,
+            "roleModel": {
+                "rolecode": "API_DEV",
+                "rolename": "API Developer"
+            }
+        },
+        {
+            "detailId": 1,
+            "summary": "To research, prepare, write, and edit online content/blog posts in FinTech domain...",
+            "keyResponsibilities": "Develop and maintain web applications",
+            "requiredQualification": "B.Tech in Computer Science",
+            "skills": "Reactjs",
+            "work_experience": "6 years",
+            "lpa": "14-30",
+            "publish": "0",
+            "inserteddate": "2025-03-16T08:53:08",
+            "publisheddate": null,
+            "roleModel": {
+                "rolecode": "API_DEV",
+                "rolename": "API Developer"
+            }
+        }
+    ]
+}
+
+2. EnablePublish
+URL: http://localhost:8081/enablePublish
+Method: POST
+I/p:
+{
+    "detailId":"2",
+    "enableFlag":"Y"
+}
+
+O/P:
+{
+    "statusCode": "0",
+    "status": "success",
+    "message": "Published Successfully"
+}
+
+3. GetCareerMaster
+URL: http://localhost:8081/careerMaster
+Method: POST 
+I/P: -
+O/P: {
+    "getCareerDetails": [
+        {
+            "description": "A career is more than just a means of earning a living; it is a journey of continuous learning, self-improvement, and fulfillment. Unlike a job, which may be temporary or transactional, a career represents long-term professional growth, shaped by experience, education, and personal aspirations. It evolves through different stages, beginning with exploration, where individuals discover their interests and potential career paths. This is followed by the establishment phase, where professionals gain expertise, build credibility, and work toward advancement. As individuals progress, they may encounter challenges such as stagnation, work-life balance issues, or the need for career transitions. However, adaptability, skill enhancement, and strategic networking play crucial roles in overcoming these obstacles and ensuring sustained growth.\n\n    Several factors influence career success, including education, technical proficiency, industry trends, and interpersonal skills. In today’s dynamic work environment, continuous learning is essential to remain competitive. With advancements in technology, professionals must stay updated with emerging tools, methodologies, and market demands. Moreover, networking and mentorship can significantly impact career progression, providing guidance, opportunities, and exposure to new perspectives. Developing strong communication, leadership, and problem-solving skills further enhances one’s ability to navigate professional challenges effectively.\n\n    Career planning is a vital aspect of long-term success. Setting clear short-term and long-term goals, identifying skill gaps, and seeking professional development opportunities help individuals stay on track. A proactive approach to career management includes leveraging online courses, attending industry events, and participating in projects that expand one’s knowledge and expertise. Additionally, personal branding and maintaining a strong online presence, especially on professional platforms like LinkedIn, can open doors to new opportunities.\n\n    The modern career landscape is rapidly evolving, with trends such as remote work, the gig economy, artificial intelligence, and automation reshaping job roles and expectations. As industries undergo transformation, professionals must embrace lifelong learning and adaptability to stay relevant. Those who cultivate a growth mindset, remain open to change, and proactively seek new challenges will find greater career satisfaction and long-term success. Ultimately, a fulfilling career is not solely defined by titles or salaries but by the impact one creates, the skills one develops, and the sense of purpose derived from one’s work."
+        }
+    ]
+}
+
+4. AllOpenings
+URL:http://localhost:8081/allOpenings
+Method:POST
+I/p:-
+O/P:
+{
+    "allOpenings": [
+        {
+            "detailId": 2,
+            "summary": "To research, prepare, write, and edit online content/blog posts in FinTech domain...",
+            "keyResponsibilities": "Develop and maintain web applications",
+            "requiredQualification": "B.Tech in Computer Science",
+            "skills": "Reactjs",
+            "work_experience": "6 years",
+            "lpa": "14-30",
+            "publish": "1",
+            "inserteddate": "2025-03-16T12:54:25",
+            "publisheddate": "2025-03-16T14:35:30",
+            "roleModel": {
+                "rolecode": "API_DEV",
+                "rolename": "API Developer"
+            }
+        }
+    ]
+}
+
+5. DeleteOpenings
+URL:http://localhost:8081/deleteOpenings
+Method:POST
+I/p:
+{
+    "detailId":"3",
+    "deleteFlag":"Y"
+}
+O/P:
+{
+    "status": "success",
+    "message": "Deleted Successfully",
+    "deletedRows": 1
+}
+
+6. SaveCandidate
+URL:http://localhost:8081/saveCandidates
+Method:POST
+I/p:
+[
+  {
+    "firstName": "Alice",
+    "lastName": "De",
+    "email": "johnde.de@example.com",
+    "mobileNumber": "1234567890",
+    "positionApplied": "Software Engineer",
+    "preferredEmployType": "Full-Time",
+    "preferredWorkLocation": "New York",
+    "roleModel": {
+      "rolecode": "API_DEV"
+    }
+  }
+]
+
+O/P:
+{
+    "success": "saved successfully"
+}
+
+7. AllCandidate
+URL:http://localhost:8081/allCandidate
+Method:POST
+I/p:-
+O/P:
+{
+    "StatusCode": "0",
+    "message": "success",
+    "allData": [
+        {
+            "firstName": "Alice",
+            "lastName": "De",
+            "email": "johnde.de@example.com",
+            "phone": "1234567890",
+            "jobTitle": "Software Engineer",
+            "employmentType": "Full-Time",
+            "location": "New York",
+            "appliedDate": "2025-03-16 13:58:22.0",
+            "startedate": null,
+            "enddate": null
+        }
+    ]
+}
+
+8: FilterCandidate
+URL:http://localhost:8081/filterCandidate
+Method:POST
+I/p:
+{
+    "startedate":"2025-01-01",
+    "enddate":"2025-03-31"
+}
+
+O/P:
+{
+    "StatusCode": "0",
+    "filteredData": [
+        {
+            "firstName": "Alice",
+            "lastName": "De",
+            "email": "johnde.de@example.com",
+            "phone": "1234567890",
+            "jobTitle": "Software Engineer",
+            "employmentType": "Full-Time",
+            "location": "New York",
+            "appliedDate": "2025-03-16 13:58:22.0",
+            "startedate": null,
+            "enddate": null
+        }
+    ],
+    "message": "success"
+}
+
+
