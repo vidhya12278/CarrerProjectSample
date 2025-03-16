@@ -1,0 +1,13 @@
+Clone to local - remote
+1. cd "path" (Navigate to project path)
+2. git init
+3. git status
+4. git add .
+5. git status
+6. git commit -m "my project"
+7. git remote add origin repo_path_here
+8. git push -u -f origin master
+
+Branches
+git branch - to check list of branches
+git checkout branchname - switch branch to another
