@@ -1,0 +1,13 @@
+Code Commit:
+Navigate to project path:
+1.	cd “path”
+2.	git status
+3.	git add .
+4.	git status
+5.	git commit -m “my  changes”
+6.	git push origin master
+ 
+
+ 
+
+ 

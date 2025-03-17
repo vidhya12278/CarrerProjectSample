@@ -1,0 +1,86 @@
+CareerOpeningProject 
+
+Table details
+CREATE TABLE `testrole` (
+  `role_id` int NOT NULL,
+  `rolename` varchar(100) NOT NULL,
+  `rolecode` varchar(50) NOT NULL,
+  PRIMARY KEY (`role_id`),
+  UNIQUE KEY `rolecode` (`rolecode`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `testrole_details` (
+  `detail_id` int NOT NULL AUTO_INCREMENT,
+  `rolecode` varchar(50) NOT NULL,
+  `summary` text,
+  `key_responsibilities` text,
+  `required_qualification` varchar(255) DEFAULT NULL,
+  `skills` text,
+  `work_experience` varchar(50) DEFAULT NULL,
+  `lpa` varchar(100) DEFAULT NULL,
+  `publish` varchar(10) DEFAULT NULL,
+  `inserteddate` timestamp NULL DEFAULT NULL,
+  `publisheddate` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`detail_id`),
+  KEY `fk_testrole` (`rolecode`),
+  CONSTRAINT `fk_testrole` FOREIGN KEY (`rolecode`) REFERENCES `testrole` (`rolecode`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO testrole (role_id, rolename, rolecode) VALUES
+    (1, 'Administrator', 'ADMIN'),
+    (2, 'Manager', 'MGR'),
+    (3, 'User', 'USR'),
+    (4, 'Guest', 'GST'),
+    (5, 'Developer', 'DEV'),
+    (6, 'Analyst', 'ANL'),
+    (7, 'Support', 'SUP'),
+    (8, 'HR', 'HR'),
+    (9, 'Finance', 'FIN'),
+    (10, 'Sales', 'SLS'),
+    (11, 'API Developer', 'API_DEV'),
+    (12, 'Automation Engineer', 'AUTO_ENG'),
+    (13, 'Backend Developer', 'BACK_DEV'),
+    (14, 'UI/UX Designer', 'UIUX_DES'),
+    (15, 'Database Administrator', 'DBA'),
+    (16, 'Full Stack Developer', 'FULLSTACK');
+
+COMMIT;
+
+
+CREATE TABLE Career_Information (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    description TEXT NOT NULL
+);
+
+
+INSERT INTO Career_Information (description)
+VALUES (
+    'A career is more than just a means of earning a living; it is a journey of continuous learning, self-improvement, and fulfillment. Unlike a job, which may be temporary or transactional, a career represents long-term professional growth, shaped by experience, education, and personal aspirations. It evolves through different stages, beginning with exploration, where individuals discover their interests and potential career paths. This is followed by the establishment phase, where professionals gain expertise, build credibility, and work toward advancement. As individuals progress, they may encounter challenges such as stagnation, work-life balance issues, or the need for career transitions. However, adaptability, skill enhancement, and strategic networking play crucial roles in overcoming these obstacles and ensuring sustained growth.
+
+    Several factors influence career success, including education, technical proficiency, industry trends, and interpersonal skills. In today’s dynamic work environment, continuous learning is essential to remain competitive. With advancements in technology, professionals must stay updated with emerging tools, methodologies, and market demands. Moreover, networking and mentorship can significantly impact career progression, providing guidance, opportunities, and exposure to new perspectives. Developing strong communication, leadership, and problem-solving skills further enhances one’s ability to navigate professional challenges effectively.
+
+    Career planning is a vital aspect of long-term success. Setting clear short-term and long-term goals, identifying skill gaps, and seeking professional development opportunities help individuals stay on track. A proactive approach to career management includes leveraging online courses, attending industry events, and participating in projects that expand one’s knowledge and expertise. Additionally, personal branding and maintaining a strong online presence, especially on professional platforms like LinkedIn, can open doors to new opportunities.
+
+    The modern career landscape is rapidly evolving, with trends such as remote work, the gig economy, artificial intelligence, and automation reshaping job roles and expectations. As industries undergo transformation, professionals must embrace lifelong learning and adaptability to stay relevant. Those who cultivate a growth mindset, remain open to change, and proactively seek new challenges will find greater career satisfaction and long-term success. Ultimately, a fulfilling career is not solely defined by titles or salaries but by the impact one creates, the skills one develops, and the sense of purpose derived from one’s work.'
+);
+
+commit;
+
+
+CREATE TABLE candidate_details (
+    candidate_id           INT AUTO_INCREMENT PRIMARY KEY, -- Primary Key (Auto-increment)
+    first_name             VARCHAR(100) NOT NULL,  -- First Name
+    last_name              VARCHAR(100) NOT NULL,  -- Last Name
+    email                  VARCHAR(255) UNIQUE NOT NULL,  -- Email (Unique)
+    mobile_number          VARCHAR(20) NOT NULL,  -- Mobile Number
+    position_applied       VARCHAR(100) NOT NULL,  -- Position Applied
+    preferred_employ_type  VARCHAR(50) NOT NULL,  -- Preferred Employment Type
+    preferred_work_location VARCHAR(100),  -- Preferred Work Location
+    inserted_date          TIMESTAMP DEFAULT CURRENT_TIMESTAMP  -- Inserted Date (Auto-filled)
+);
+
+ALTER TABLE candidate_details ADD CONSTRAINT fk_rolecode 
+FOREIGN KEY (rolecode) REFERENCES testrole(rolecode) ON DELETE CASCADE;
+
+ALTER TABLE candidate_details ADD COLUMN rolecode VARCHAR(50) NOT NULL;
+
