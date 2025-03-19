@@ -1,0 +1,13 @@
+Pull Commands
+git pull origin master  
+git push origin master
+
+Merge the our branch to main branch
+git checkout ourbranch (master)
+git pull origin master
+git checkout targetbranch(main)
+git pull origin main
+git merge master --allow-unrelated-histories
+git add .
+git commit -m "Merged master into main"
+git push origin main
