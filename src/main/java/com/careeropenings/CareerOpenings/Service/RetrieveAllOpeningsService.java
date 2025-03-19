@@ -26,6 +26,8 @@ public class RetrieveAllOpeningsService {
 
 		logger.info("RetrieveAllOpeningsService data size : " + allOpenings.size());
 
-		return Map.of("allOpenings", allOpenings.isEmpty() ? "No records found" : allOpenings);
+		return Map.of("StatusCode", allOpenings.isEmpty() ? "0" : "1", "Message",
+				allOpenings.isEmpty() ? "Failure" : "Success", "allOpenings",
+				allOpenings.isEmpty() ? "No Records Found" : allOpenings);
 	}
 }

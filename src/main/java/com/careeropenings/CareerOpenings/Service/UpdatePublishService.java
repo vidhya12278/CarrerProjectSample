@@ -33,9 +33,10 @@ public class UpdatePublishService {
 				: roleRepo.publishWhenMultipleRequest();
 
 		roleRepo.flush();
+		
 		logger.info("UpdatePublishService updated rows: {}", updatedRows);
 
-		return Map.of("statusCode", updatedRows > 0 ? "0" : "1", "status", updatedRows > 0 ? "success" : "failure",
-				"message", updatedRows > 0 ? "Published Successfully" : "No records updated");
+		return Map.of("StatusCode", updatedRows > 0 ? "0" : "1", "Status", updatedRows > 0 ? "Success" : "Failure",
+				"Message", updatedRows > 0 ? "Published Successfully" : "No Records Updated");
 	}
 }

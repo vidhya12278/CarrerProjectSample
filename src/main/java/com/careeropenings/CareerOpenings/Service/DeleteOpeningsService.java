@@ -28,8 +28,8 @@ public class DeleteOpeningsService {
 
 		logger.info("DeleteOpeningsService deletedRows response: {}", deletedRows);
 
-		return Map.of("status", deletedRows > 0 ? "success" : "failure", "message",
-				deletedRows > 0 ? "Deleted Successfully" : "No records deleted", "deletedRows", deletedRows);
+		return Map.of("Status", deletedRows > 0 ? "Success" : "Failure", "Message",
+				deletedRows > 0 ? "Deleted Successfully" : "No Records Deleted", "deletedRows", deletedRows);
 
 	}
 

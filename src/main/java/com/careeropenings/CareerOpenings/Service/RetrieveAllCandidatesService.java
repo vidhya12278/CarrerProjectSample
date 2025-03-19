@@ -13,8 +13,6 @@ import org.springframework.stereotype.Service;
 import com.careeropenings.CareerOpenings.DTO.CandidateDTO;
 import com.careeropenings.CareerOpenings.Repo.SaveCandidateRep;
 
-
-
 @Service
 public class RetrieveAllCandidatesService {
 	private static final Logger logger = LoggerFactory.getLogger(RetrieveAllCandidatesService.class);
@@ -46,8 +44,8 @@ public class RetrieveAllCandidatesService {
 						data[7].toString()))
 				.collect(Collectors.toList());
 
-		return Map.of("StatusCode", allData.isEmpty() ? "1" : "0", "message", allData.isEmpty() ? "failure" : "success",
-				"allData", allData.isEmpty() ? "No records found" : allData);
+		return Map.of("StatusCode", allData.isEmpty() ? "1" : "0", "Message", allData.isEmpty() ? "Failure" : "Success",
+				"allData", allData.isEmpty() ? "No Records Found" : allData);
 
 	}
 
@@ -62,9 +60,9 @@ public class RetrieveAllCandidatesService {
 						d[4].toString(), d[5].toString(), d[6].toString(), d[7].toString()))
 				.collect(Collectors.toList());
 
-		return Map.of("StatusCode", filterData.isEmpty() ? "1" : "0", "message",
-				filterData.isEmpty() ? "failure" : "success", "filteredData",
-				filterData.isEmpty() ? "No records found" : filterData);
+		return Map.of("StatusCode", filterData.isEmpty() ? "1" : "0", "Message",
+				filterData.isEmpty() ? "Failure" : "Success", "filteredData",
+				filterData.isEmpty() ? "No Records Found" : filterData);
 	}
 
 }

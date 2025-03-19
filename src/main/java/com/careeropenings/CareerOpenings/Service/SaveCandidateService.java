@@ -18,8 +18,12 @@ public class SaveCandidateService {
 		this.saveRepo = saveRepo;
 	}
 
-	public Map<String,String> saveCandidateDetai(List<SaveCandidateDetails> saveDetails) {
-		List<SaveCandidateDetails> collect = saveDetails.stream().map(saveRepo::save).collect(Collectors.toList());
-		return collect.isEmpty() ? Map.of("error", "failed to insert") : Map.of("success", "saved successfully");
+	public Map<String, String> saveCandidateDetai(List<SaveCandidateDetails> saveDetails) {
+		List<SaveCandidateDetails> saveCandidateDetails = saveDetails.stream().map(saveRepo::save)
+				.collect(Collectors.toList());
+
+		return Map.of("StatusCode", saveCandidateDetails.isEmpty() ? "0" : "1", "Message",
+				saveCandidateDetails.isEmpty() ? "Failure" : "Success", "Response",
+				saveCandidateDetails.isEmpty() ? "Not saved successfully" : "Saved Successfully");
 	}
 }

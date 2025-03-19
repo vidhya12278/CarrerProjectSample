@@ -13,7 +13,9 @@ import com.careeropenings.CareerOpenings.Repo.RoleRepo;
 
 @Service
 public class RoleService {
+	
 	private static final Logger logger = LoggerFactory.getLogger(RoleService.class);
+	
 	private final RoleRepo roleRepo;
 
 	public RoleService(RoleRepo roleRepo) {
@@ -21,10 +23,10 @@ public class RoleService {
 	}
 
 	public Map<String, Object> saveRequirement(List<RoleDetails> roleDetails) {
-		logger.info("test");
 		List<RoleDetails> saveReq = roleDetails.stream().map(roleRepo::save).collect(Collectors.toList());
-		
-		return saveReq.isEmpty() ? Map.of("error", "failed to save...")
-				: Map.of("unPublishedDetails", roleRepo.findAllUnpublished());
+
+		return Map.of("Statuscode", saveReq.isEmpty() ? "0" : "1", "Message", saveReq.isEmpty() ? "Failure" : "Success",
+				"unPublishedDetails", saveReq.isEmpty() ? "No Records Found" : roleRepo.findAllUnpublished());
+
 	}
 }
