@@ -21,30 +21,41 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SequenceGenerator(name = "candidate_seq", sequenceName = "CANDIDATE_SEQ", allocationSize = 1)
+@SequenceGenerator(
+    name = "candidate_seq",
+    sequenceName = "CANDIDATE_SEQ",
+    allocationSize = 1
+)
 public class SaveCandidateDetails {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) 
-	private Long candidateId;
+    @Id
+    @GeneratedValue(
+        strategy = GenerationType.SEQUENCE,
+        generator = "candidate_seq"
+    )
+    private Long candidateId;
 
-	private String firstName;
-	private String lastName;
-	private String email;
-	private String mobileNumber;
-	private String positionApplied;
-	private String preferredEmployType;
-	private String preferredWorkLocation;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String mobileNumber;
+    private String positionApplied;
+    private String preferredEmployType;
+    private String preferredWorkLocation;
 
-	@Column(name = "insertedDate", columnDefinition = "TIMESTAMP")
-	private LocalDateTime insertedDate;
-	
-	@ManyToOne
-    @JoinColumn(name = "rolecode", referencedColumnName = "rolecode", nullable = false) 
+    @Column(name = "insertedDate", columnDefinition = "TIMESTAMP")
+    private LocalDateTime insertedDate;
+
+    @ManyToOne
+    @JoinColumn(
+        name = "rolecode",
+        referencedColumnName = "rolecode",
+        nullable = false
+    )
     private RoleModel roleModel;
 
-	@PrePersist
-	protected void onCreate() {
-		this.insertedDate = LocalDateTime.now();
-	}
+    @PrePersist
+    protected void onCreate() {
+        this.insertedDate = LocalDateTime.now();
+    }
 }
